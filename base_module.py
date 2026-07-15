@@ -17,7 +17,7 @@ class Credential:
 
 class BaseModule(ABC):
 
-
+    unique_id: str = None
     name: str = None
     description: str = None
     expected_credentials: list[Credential] = []
@@ -25,6 +25,12 @@ class BaseModule(ABC):
     # Должен быть общим для всех модулей
     stop_event = threading.Event()
 
+    
+    @property
+    @abstractmethod
+    def unique_id(self):
+        pass
+        
 
     @property
     @abstractmethod
